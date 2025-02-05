@@ -27,8 +27,16 @@ jobs:
         MEND_EMAIL: ${{secrets.MEND_EMAIL}}
         MEND_USER_KEY: ${{secrets.MEND_USER_KEY}}
         MEND_URL: https://saas.mend.io
+        MEND_LOG_LEVEL: DEBUG
       run: |
         echo Downloading Mend CLI
         curl https://downloads.mend.io/cli/linux_amd64/mend -o /usr/local/bin/mend && chmod +x /usr/local/bin/mend
         echo run Mend scan
         mend dep -u -s "*//AI//AutoPrompt"
+        
+    - name: 'Upload .mend/logs folder'
+      uses: actions/upload-artifact@v2
+      with:
+        name: Mend logs
+        path: /home/runner/.mend/logs/
+        retention-days: 1
