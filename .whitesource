@@ -1,5 +1,6 @@
 {
   "settingsInheritedFrom": "DimaMend/whitesource-config@main",
+  "baseBranches": [python_3.9_support]
   "scanSettings": {
     "configMode": "LOCAL"
   }
